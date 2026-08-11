@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DATA SPEAKS!! — Student Performance Machine Learning Analysis">
+<title>DATA SPEAKS!! | Student Performance ML</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="noise"></div>
+<header class="topbar">
+  <a class="brand" href="#top">DATA<span>SPEAKS!!</span></a>
+  <nav><a href="#overview">Overview</a><a href="#models">Models</a><a href="#insights">Insights</a><a href="#methodology">Methodology</a></nav>
+  <a class="github" href="https://github.com/PrajyotXDev/data-speaks-student-performance" target="_blank">GitHub ↗</a>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="eyebrow">MACHINE LEARNING • STUDENT PERFORMANCE</div>
+  <h1>What does the data<br><em>actually say?</em></h1>
+  <p class="hero-copy">An evidence-driven regression study of final mathematics grades using non-grade student and school-related variables.</p>
+  <div class="hero-actions"><a class="button primary" href="#models">Explore results</a><a class="button ghost" href="#methodology">How it works</a></div>
+  <div class="hero-note">Target: <strong>G3</strong> · Train/test split: <strong>80/20</strong> · Seed: <strong>42</strong></div>
+</section>
+
+<section id="overview" class="section">
+  <div class="section-head"><div><div class="eyebrow">AT A GLANCE</div><h2>The strongest model was <span>Random Forest.</span></h2></div><p>All models were evaluated on the same unseen test set.</p></div>
+  <div class="metric-grid">
+    <article class="metric featured"><div class="metric-label">BEST MODEL</div><div class="metric-value small">Random Forest</div><div class="metric-sub">Regressor</div></article>
+    <article class="metric"><div class="metric-label">R²</div><div class="metric-value">0.2733</div><div class="metric-sub">higher is better</div></article>
+    <article class="metric"><div class="metric-label">RMSE</div><div class="metric-value">3.8602</div><div class="metric-sub">lower is better</div></article>
+    <article class="metric"><div class="metric-label">MAE</div><div class="metric-value">3.0810</div><div class="metric-sub">lower is better</div></article>
+  </div>
+  <div class="callout"><div class="callout-mark">01</div><div><h3>No target leakage</h3><p><code>G1</code> and <code>G2</code> were deliberately excluded from the predictors, so previous-period grades were not used to predict <code>G3</code>.</p></div></div>
+</section>
+
+<section id="models" class="section dark-section">
+  <div class="section-head"><div><div class="eyebrow">MODEL BENCHMARK</div><h2>Three approaches. <span>One winner.</span></h2></div><p>Lower error is better; higher R² is better.</p></div>
+  <div class="model-table-wrap">
+    <table class="model-table"><thead><tr><th>Model</th><th>MAE</th><th>RMSE</th><th>R²</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr class="winner"><td>Random Forest Regressor</td><td>3.0810</td><td>3.8602</td><td>0.2733</td><td><span class="badge">BEST</span></td></tr>
+      <tr><td>Gradient Boosting Regressor</td><td>3.2513</td><td>4.0570</td><td>0.1973</td><td>—</td></tr>
+      <tr><td>Linear Regression</td><td>3.3953</td><td>4.1957</td><td>0.1415</td><td>—</td></tr>
+    </tbody></table>
+  </div>
+  <div class="figure-grid">
+    <figure class="figure-card"><img src="outputs/figures/model_comparison.png" alt="Model comparison"><figcaption>Test-set model comparison</figcaption></figure>
+    <figure class="figure-card"><img src="outputs/figures/actual_vs_predicted.png" alt="Actual versus predicted"><figcaption>Actual vs predicted G3</figcaption></figure>
+    <figure class="figure-card"><img src="outputs/figures/residual_analysis.png" alt="Residual analysis"><figcaption>Residual behaviour</figcaption></figure>
+  </div>
+</section>
+
+<section id="insights" class="section">
+  <div class="section-head"><div><div class="eyebrow">FEATURE SIGNALS</div><h2>What mattered <span>most?</span></h2></div><p>Random Forest feature importance is predictive importance, not causation.</p></div>
+  <div class="insight-layout">
+    <div class="feature-list">
+      <div class="feature"><span>01</span><div class="feature-main"><strong>absences</strong><div class="bar"><i style="width:100%"></i></div></div><b>0.2069</b></div>
+      <div class="feature"><span>02</span><div class="feature-main"><strong>failures</strong><div class="bar"><i style="width:76%"></i></div></div><b>0.1574</b></div>
+      <div class="feature"><span>03</span><div class="feature-main"><strong>health</strong><div class="bar"><i style="width:27%"></i></div></div><b>0.0551</b></div>
+      <div class="feature"><span>04</span><div class="feature-main"><strong>goout</strong><div class="bar"><i style="width:23%"></i></div></div><b>0.0473</b></div>
+      <div class="feature"><span>05</span><div class="feature-main"><strong>age</strong><div class="bar"><i style="width:18%"></i></div></div><b>0.0378</b></div>
+      <div class="feature"><span>06</span><div class="feature-main"><strong>studytime</strong><div class="bar"><i style="width:15%"></i></div></div><b>0.0315</b></div>
+      <div class="feature"><span>07</span><div class="feature-main"><strong>Fedu</strong><div class="bar"><i style="width:15%"></i></div></div><b>0.0314</b></div>
+      <div class="feature"><span>08</span><div class="feature-main"><strong>Medu</strong><div class="bar"><i style="width:14%"></i></div></div><b>0.0295</b></div>
+      <div class="feature"><span>09</span><div class="feature-main"><strong>Walc</strong><div class="bar"><i style="width:14%"></i></div></div><b>0.0292</b></div>
+      <div class="feature"><span>10</span><div class="feature-main"><strong>freetime</strong><div class="bar"><i style="width:14%"></i></div></div><b>0.0289</b></div>
+    </div>
+    <figure class="figure-card feature-figure"><img src="outputs/figures/feature_importance.png" alt="Feature importance"><figcaption>Full feature-importance ranking</figcaption></figure>
+  </div>
+  <div class="finding-grid">
+    <article><div class="finding-number">−0.3612</div><h3>Failures ↔ G3</h3><p><code>failures</code> had a negative Spearman association with final grade in this dataset.</p></article>
+    <article><div class="finding-number">+0.2250</div><h3>Medu ↔ G3</h3><p>Mother's education had a positive Spearman association with G3, but lower model importance.</p></article>
+    <article><div class="finding-number">+0.0177</div><h3>Absences ↔ G3</h3><p>Absences had the highest tree-model importance but only a weak simple association.</p></article>
+  </div>
+</section>
+
+<section id="methodology" class="section methodology">
+  <div class="section-head"><div><div class="eyebrow">METHODOLOGY</div><h2>Designed to be <span>honest about the data.</span></h2></div></div>
+  <div class="method-grid">
+    <article><span>01</span><h3>Prepare</h3><p>Use the cleaned and encoded Student Performance mathematics dataset.</p></article>
+    <article><span>02</span><h3>Split</h3><p>80% training and 20% testing with random seed 42.</p></article>
+    <article><span>03</span><h3>Model</h3><p>Compare Linear Regression, Random Forest, and Gradient Boosting.</p></article>
+    <article><span>04</span><h3>Evaluate</h3><p>Measure MAE, RMSE, and R² on unseen test observations.</p></article>
+  </div>
+  <div class="method-detail">
+    <div><h3>What was intentionally excluded?</h3><p><code>G1</code> and <code>G2</code> are excluded from <code>X</code> because they would create target leakage when predicting final grade <code>G3</code>.</p></div>
+    <div><h3>What does the result mean?</h3><p>The model provides limited predictive power. The dataset is observational and relatively small, so findings are predictive associations—not causal effects.</p></div>
+  </div>
+  <div class="limitations"><div class="eyebrow">LIMITATIONS</div><ul><li>Observational data cannot establish causality.</li><li>The dataset is relatively small and specific to its student population.</li><li>Test-set performance may not generalize to other populations.</li><li>Feature importance should not be interpreted as a causal ranking.</li></ul></div>
+</section>
+
+<section class="section conclusion">
+  <div class="conclusion-card"><div class="eyebrow">CONCLUSION</div><h2>Prediction is possible.<br><span>Prediction is not explanation.</span></h2><p>Random Forest was the strongest of the three tested approaches, but R² = 0.2733 shows that much of the variation in final mathematics grades remains unexplained by the available non-grade variables.</p><a class="button primary" href="https://github.com/PrajyotXDev/data-speaks-student-performance" target="_blank">View full project on GitHub ↗</a></div>
+</section>
+</main>
+
+<footer><span>DATA SPEAKS!!</span><span>Student Performance • Machine Learning Analysis</span><a href="https://github.com/PrajyotXDev/data-speaks-student-performance" target="_blank">PrajyotXDev ↗</a></footer>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Item,Value
+Dataset,Student Performance — Mathematics
+Target,G3
+Best Model,Random Forest Regressor
+Best RMSE,3.860228961659983
+Best MAE,3.080976950335178
+Best R²,0.2732829414324014
+Best Tree Model,Random Forest Regressor
